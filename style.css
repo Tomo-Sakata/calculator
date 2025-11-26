@@ -1,0 +1,46 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.display{
+  background-color: gray;
+  height: 8rem;
+  border: none;
+}
+
+.container {
+  background-color: gray;
+  height: 30rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.3rem;
+}
+
+.item {
+  flex: 1 1 0;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border: solid;
+  min-width: 6.5rem; 
+}
+
+.zero{
+  flex-grow: 2;
+  min-width: 13.5rem; 
+}
