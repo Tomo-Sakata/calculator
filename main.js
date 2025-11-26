@@ -5,7 +5,7 @@ const numberButtons = document.querySelectorAll(".number");
   const currentInput = numberButtons.forEach(function (numberButton) {
   numberButton.addEventListener("click", function () {
     const display = document.querySelector(".display");
-    display.textContent += parseInt(this.textContent);
+    display.textContent += this.textContent;
   })
 });
 
