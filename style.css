@@ -14,15 +14,17 @@ body {
 .calculator {
   max-width: 30rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
 }
 
 .display{
   background-color: gray;
   height: 8rem;
   border: none;
-  font-size: 2rem;
-  text-align: right;
+  font-size: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .container {

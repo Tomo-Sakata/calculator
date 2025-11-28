@@ -2,7 +2,9 @@
 
 let firstOperand = "";
 let secondOperand = "";
+let result = "";
 let operator = null;
+let isResultDisplayed = false;
 
 const numberButtons = document.querySelectorAll(".number");
 const display = document.querySelector(".display");
@@ -12,12 +14,15 @@ const equal = document.querySelector(".equal");
 //get first Operand number
 const inputNumber = numberButtons.forEach(function (numberButton) {
   numberButton.addEventListener("click", function () {
-    if (operator === null){
+    if (operator === null && isResultDisplayed === false){
       firstOperand += this.textContent;
       display.textContent = firstOperand;
-    } else {
+    } 
+    else if (operator !== null){
       secondOperand += this.textContent
       display.textContent = firstOperand + " " + operator + " " + secondOperand;
+    }
+    else{
     }
   })
 });
@@ -40,14 +45,26 @@ const clearButton = document.querySelector(".clear");
   });
 
 // equal
+function operate (operator, a, b) { 
+  switch (operator) {
+  case "+":
+    return add(parseFloat(a), parseFloat(b));
+  case "-":
+    return subtract(parseFloat(a), parseFloat(b));
+  case "×":
+    return multiply(parseFloat(a), parseFloat(b));
+  case "÷":
+    return division(parseFloat(a), parseFloat(b));
+  }
+};
+
 equal.addEventListener("click", function () {
   if (firstOperand !== "" && secondOperand !== "" && operator !== null){
-    switch (operator) {
-    case "+":
-      display.textContent = add(parseFloat(firstOperand), parseFloat(secondOperand));
-      resetOperand();  
-      break;
-    }
+    result = operate(operator, firstOperand, secondOperand)
+    display.textContent = result;
+    resetOperand();  
+    firstOperand = result;
+    isResultDisplayed = true;
   }
 })
 
@@ -56,9 +73,26 @@ function resetOperand () {
   firstOperand = "";
   secondOperand = "";
   operator = null;
+  isResultDisplayed = false;
 }
 
-//funciton add
+// add, subtract, multiply, division method
 const add = function(a,b) {
-return a + b;
+  return a + b;
 };
+
+const subtract = function(a, b) {
+  return a - b;
+};
+
+const multiply = function(a, b) {
+  return a * b;
+};
+
+const division = function(a, b) {
+  if (b !== 0) {
+    return a / b;
+  } else {
+    return "error";
+  }
+}
