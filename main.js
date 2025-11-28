@@ -58,6 +58,22 @@ const clearButton = document.querySelector(".clear");
     resetOperand();
   });
 
+//display delete
+const deleteButton = document.querySelector(".delete");
+  deleteButton.addEventListener("click", function () {
+    if (firstOperand !== "" && operator === null && secondOperand === "" && isResultDisplayed === false) {
+      display.textContent = firstOperand.slice(0, -1);
+      firstOperand = display.textContent;
+    } else if (firstOperand !== "" && operator !== null && secondOperand === "") {
+      operator = null;
+      display.textContent = firstOperand;
+    } else if (firstOperand !== "" && operator !== null && secondOperand !== "") {
+      secondOperand = secondOperand.slice(0, -1);
+      display.textContent = firstOperand + " " + operator + " " + secondOperand;
+    }
+  });
+
+
 // equal
 function operate (operator, a, b) { 
   switch (operator) {
