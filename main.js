@@ -40,9 +40,13 @@ const inputNumber = numberButtons.forEach(function (numberButton) {
 //display operator
 const inputOperator = operatorButtons.forEach(function (operatorButton) {
   operatorButton.addEventListener("click", function () {
-    if(firstOperand !== "" && operator === null){
+    if(firstOperand !== ""){
+      if(secondOperand === "") {
       operator = this.textContent;
-      display.textContent = firstOperand + " " + operator + " ";
+      display.textContent = firstOperand + " " + operator + " ";        
+      } else {
+        display.textContent = firstOperand + " " + operator + " " + secondOperand;
+      }
     } 
   })
 });
@@ -73,7 +77,7 @@ equal.addEventListener("click", function () {
     result = operate(operator, firstOperand, secondOperand)
     display.textContent = result;
     resetOperand();  
-    firstOperand = result;
+    firstOperand = result.toString();
     isResultDisplayed = true;
   }
 })
