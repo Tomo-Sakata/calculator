@@ -10,6 +10,18 @@ const numberButtons = document.querySelectorAll(".number");
 const display = document.querySelector(".display");
 const operatorButtons = document.querySelectorAll(".operator");
 const equal = document.querySelector(".equal");
+const decimal = document.querySelector(".decimal");
+
+//decimal
+decimal.addEventListener("click", function () {
+  if(!firstOperand.includes(".") && operator === null){
+  firstOperand = firstOperand === "" ? "0." : firstOperand + ".";     
+  display.textContent = firstOperand;
+  } else if (operator !== null && !secondOperand.includes(".")){
+    secondOperand = secondOperand === "" ? "0." : secondOperand + ".";     
+    display.textContent = firstOperand + " " + operator + " " + secondOperand;
+  }
+});
 
 //get first Operand number
 const inputNumber = numberButtons.forEach(function (numberButton) {
@@ -21,8 +33,6 @@ const inputNumber = numberButtons.forEach(function (numberButton) {
     else if (operator !== null){
       secondOperand += this.textContent
       display.textContent = firstOperand + " " + operator + " " + secondOperand;
-    }
-    else{
     }
   })
 });
@@ -93,6 +103,6 @@ const division = function(a, b) {
   if (b !== 0) {
     return a / b;
   } else {
-    return "error";
+    return "Error";
   }
 }
