@@ -45,7 +45,11 @@ const inputOperator = operatorButtons.forEach(function (operatorButton) {
       operator = this.textContent;
       display.textContent = firstOperand + " " + operator + " ";        
       } else {
-        display.textContent = firstOperand + " " + operator + " " + secondOperand;
+      result = operate(operator, firstOperand, secondOperand);
+      firstOperand = parseFloat(result.toFixed(10).toString());
+      secondOperand = "";
+      operator = this.textContent;
+      display.textContent = firstOperand + " " + operator + " ";
       }
     } 
   })
@@ -90,8 +94,8 @@ function operate (operator, a, b) {
 
 equal.addEventListener("click", function () {
   if (firstOperand !== "" && secondOperand !== "" && operator !== null){
-    result = operate(operator, firstOperand, secondOperand)
-    display.textContent = result;
+    result = operate(operator, firstOperand, secondOperand);
+    display.textContent = parseFloat(result.toFixed(10));
     resetOperand();  
     firstOperand = result.toString();
     isResultDisplayed = true;
