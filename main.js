@@ -130,3 +130,17 @@ const division = function(a, b) {
     return "Error";
   }
 }
+
+// keybord
+document.addEventListener("keydown", function (event) {
+  // 数字キー
+  if (!isNaN(event.key)) {
+    if (operator === null && isResultDisplayed === false) {
+      firstOperand += event.key;
+      display.textContent = firstOperand;
+    } else if (operator !== null) {
+      secondOperand += event.key;
+      display.textContent = firstOperand + " " + operator + " " + secondOperand;
+    }
+  }
+});
